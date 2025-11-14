@@ -69,9 +69,7 @@ function Preferences() {
       <h2 className="text-xl font-semibold text-gray-900">Preferences</h2>
 
       <p className="text-gray-600 leading-relaxed">
-        Patients who wish to receive their results immediately can still request
-        and receive them without delay. The law ensures that patients can choose
-        how they receive information.
+        You are always in control of how you receive your scan results.
       </p>
 
       <div className="space-y-3">

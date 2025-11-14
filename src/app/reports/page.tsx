@@ -1,56 +1,62 @@
 "use client";
 
 import { Sidebar } from "@/components/Sidebar";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { MonitorRow } from "@/components/MonitorRow";
+import { ResultCard } from "@/components/ResultsCard";
+import Link from "next/link";
 
-export default function ReportsPage() {
+export default function ResultsPage() {
   return (
     <div className="min-h-screen flex bg-[#faf7f2]">
       <Sidebar />
 
-      <main className="flex-1 p-12">
-        <h2 className="text-2xl font-semibold mb-8">My Reports (0)</h2>
+      <main className="flex-1 p-12 space-y-12 max-w-4xl">
+        <h1 className="text-3xl font-semibold">Results</h1>
 
-        <Card className="w-96 mb-12">
-          <CardHeader>
-            <CardTitle className="flex justify-between items-center">
-              Cancer Risk Assessment
-              <span className="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">
-                Not Completed
-              </span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Button variant="link" className="px-0">
-              Start Cancer Risk Assessment
-            </Button>
-          </CardContent>
-        </Card>
+        {/* IMAGING RESULTS SECTION */}
+        <SectionHeader title="Imaging Results" />
 
-        <h3 className="text-xl font-semibold flex items-center gap-2">
-          My Monitor{" "}
-          <span className="text-xs ml-1 bg-black text-white px-2 py-0.5 rounded">
-            NEW
-          </span>
-        </h3>
+<Link href="/reports/fatty-liver">
+  <ResultCard
+    title="CT Scan Review"
+    date="June 15, 2024"
+    description="Your recent CT scan has been reviewed by our clinical team and is ready for viewing. This includes risk scoring, structural reviews, and comparisons with your previous scans."
+    status="ready"
+  />
+</Link>
 
-        <p className="text-gray-600 mt-2 mb-6 max-w-xl">
-          Ezra Monitor is a comparison of your scans over time and allows you to track
-          how your body changes. Each section displays the highest risk score.
-        </p>
+<ResultCard
+          title="MRI Full Body Scan"
+          date="February 3, 2024"
+          description="Your full-body MRI scan is available for review. This includes detailed analysis across all body systems."
+          status="processing"
+        />
 
-        <Button>Book Now</Button>
+        {/* DIVIDER */}
+        <div className="h-12"></div>
 
-        <div className="mt-10 space-y-8">
-          {["Head And Neck", "Spine", "Lung", "Abdomen", "Pelvis"].map(
-            (section) => (
-              <MonitorRow key={section} label={section} />
-            )
-          )}
-        </div>
+        {/* LAB RESULTS SECTION */}
+        <SectionHeader title="Lab Results" />
+
+        <ResultCard
+          title="Blood Panel Results"
+          date="January 12, 2024"
+          description="Your complete blood panel, including metabolic, inflammatory, and nutrient markers, is ready for review."
+          status="done"
+        />
+
+        <ResultCard
+          title="Genetic Risk Report"
+          date="December 4, 2023"
+          description="Your genetic screening results are available and include insights for long-term health risk prevention."
+          status="submitted"
+        />
       </main>
     </div>
+  );
+}
+
+function SectionHeader({ title }: { title: string }) {
+  return (
+    <h2 className="text-2xl font-semibold text-gray-900 mb-4">{title}</h2>
   );
 }

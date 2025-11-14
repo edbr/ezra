@@ -1,21 +1,51 @@
 "use client";
 
-import { ReactNode } from "react";
+import Link from "next/link";
 
 export function ResultCard({
   title,
   date,
   description,
+  status = "ready",
 }: {
   title: string;
   date: string;
   description?: string;
+  status?: "submitted" | "processing" | "ready" | "done";
 }) {
+  const statusStyles = {
+    submitted: {
+      bg: "bg-yellow-100",
+      text: "text-yellow-800",
+      dot: "bg-yellow-600",
+      label: "Submitted",
+    },
+    processing: {
+      bg: "bg-orange-100",
+      text: "text-orange-800",
+      dot: "bg-orange-600",
+      label: "Processing",
+    },
+    ready: {
+      bg: "bg-green-100",
+      text: "text-green-700",
+      dot: "bg-green-500",
+      label: "Ready for Review",
+    },
+    done: {
+      bg: "bg-gray-100",
+      text: "text-gray-700",
+      dot: "bg-gray-500",
+      label: "Reviewed",
+    },
+  }[status];
+
   return (
     <div className="w-full bg-white border rounded-lg p-6 shadow-sm space-y-4">
-      {/* Top Row: Icon + Pills */}
+      {/* Top Row */}
       <div className="flex justify-between items-start">
-        {/* Left: Logo/Icon */}
+
+        {/* ICON */}
         <div className="flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -29,17 +59,18 @@ export function ResultCard({
           </svg>
         </div>
 
-        {/* Right: Date + Ready Badge */}
+        {/* STATUS PILL + DATE */}
         <div className="flex flex-row items-end gap-2">
 
-          {/* READY FOR REVIEW PILL */}
-        {/* READY FOR REVIEW PILL */}
-            <div className="flex items-center gap-2 bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">
-            <span className="w-2 h-2 rounded-full bg-green-500"></span>
-            Ready for Review
-            </div>
+          {/* STATUS PILL */}
+          <div
+            className={`flex items-center gap-2 ${statusStyles.bg} ${statusStyles.text} text-xs font-semibold px-3 py-1 rounded-full`}
+          >
+            <span className={`w-2 h-2 rounded-full ${statusStyles.dot}`}></span>
+            {statusStyles.label}
+          </div>
 
-          {/* DATE PILL */}
+          {/* DATE */}
           <div className="bg-gray-100 text-gray-600 text-sm px-4 py-2 rounded-full">
             {date}
           </div>
@@ -49,7 +80,7 @@ export function ResultCard({
       {/* TITLE */}
       <h2 className="text-2xl font-semibold text-gray-900">{title}</h2>
 
-      {/* Description (optional) */}
+      {/* Description */}
       {description && (
         <p className="text-gray-600 leading-relaxed">{description}</p>
       )}
