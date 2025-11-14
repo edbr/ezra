@@ -67,6 +67,31 @@ export default function FattyLiverResultPage() {
             Your result falls into the <strong>mild</strong> category, meaning that
             intervention now can prevent long-term complications.
           </p>
+          {/* UNDERSTANDING CHECK */}
+<div className="pt-4 border-t mt-4">
+  <h3 className="text-sm font-semibold text-gray-900 mb-3">
+    Do you feel you understand these results?
+  </h3>
+
+  <div className="flex gap-3">
+    {/* YES BUTTON */}
+    <button
+      className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition text-gray-800"
+    >
+      <span className="text-lg">👍</span>
+      <span></span>
+    </button>
+
+    {/* NO BUTTON */}
+    <button
+      className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition text-gray-800"
+    >
+      <span className="text-lg">👎</span>
+      <span></span>
+    </button>
+  </div>
+</div>
+
         </section>
 
         {/* RECOMMENDATIONS */}
