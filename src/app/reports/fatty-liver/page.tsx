@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { Sidebar } from "@/components/Sidebar";
 import Image from "next/image";
 
 export default function FattyLiverResultPage() {
+  const [understanding, setUnderstanding] = useState<"yes" | "no" | null>(null);
+
   return (
     <div className="min-h-screen flex bg-[#faf7f2]">
       <Sidebar />
@@ -23,16 +26,15 @@ export default function FattyLiverResultPage() {
         </div>
 
         {/* IMAGE PREVIEW */}
-<div className="bg-white border rounded-lg shadow-sm p-6 flex items-center justify-center h-64 overflow-hidden">
-  <Image
-    src="/liver.png"
-    alt="CT Scan - Fatty Liver"
-    width={600}
-    height={400}
-    className="object-contain rounded"
-  />
-</div>
-
+        <div className="bg-white border rounded-lg shadow-sm p-6 flex items-center justify-center h-64 overflow-hidden">
+          <Image
+            src="/liver.png"
+            alt="CT Scan - Fatty Liver"
+            width={600}
+            height={400}
+            className="object-contain rounded"
+          />
+        </div>
 
         {/* SCAN FINDING */}
         <section className="bg-white border rounded-lg shadow-sm p-6 space-y-4">
@@ -44,10 +46,11 @@ export default function FattyLiverResultPage() {
             </p>
 
             <p className="text-gray-700 mt-2 leading-relaxed">
-              Your CT scan indicates the presence of fat accumulation in the liver.
-              This condition can lead to inflammation, fibrosis, cirrhosis, and liver
-              cancer over time if not addressed. The good news is that with targeted
-              lifestyle changes, NAFLD is often reversible.
+              Your CT scan indicates the presence of fat accumulation in the
+              liver. This condition can lead to inflammation, fibrosis,
+              cirrhosis, and liver cancer over time if not addressed. The good
+              news is that with targeted lifestyle changes, NAFLD is often
+              reversible.
             </p>
           </div>
         </section>
@@ -57,46 +60,59 @@ export default function FattyLiverResultPage() {
           <h2 className="text-xl font-semibold text-gray-900">What This Means</h2>
 
           <p className="text-gray-700 leading-relaxed">
-            Fatty liver develops when the liver stores more fat than it can process.
-            This is commonly linked to insulin resistance, elevated triglycerides,
-            central weight gain, and metabolic syndrome. Many patients have no symptoms,
-            which makes imaging an essential tool for early detection.
+            Fatty liver develops when the liver stores more fat than it can
+            process. This is commonly linked to insulin resistance, elevated
+            triglycerides, central weight gain, and metabolic syndrome. Many
+            patients have no symptoms, which makes imaging an essential tool for
+            early detection.
           </p>
 
           <p className="text-gray-700 leading-relaxed">
-            Your result falls into the <strong>mild</strong> category, meaning that
-            intervention now can prevent long-term complications.
+            Your result falls into the <strong>mild</strong> category, meaning
+            that intervention now can prevent long-term complications.
           </p>
+
           {/* UNDERSTANDING CHECK */}
-<div className="pt-4 border-t mt-4">
-  <h3 className="text-sm font-semibold text-gray-900 mb-3">
-    Do you feel you understand these results?
-  </h3>
+          <div className="pt-4 border-t mt-4">
+            <h3 className="text-sm font-semibold text-gray-900 mb-3">
+              Do you feel you understand these results?
+            </h3>
 
-  <div className="flex gap-3">
-    {/* YES BUTTON */}
-    <button
-      className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition text-gray-800"
-    >
-      <span className="text-lg">👍</span>
-      <span></span>
-    </button>
+            <div className="flex gap-3">
+              {/* YES */}
+              <button
+                onClick={() => setUnderstanding("yes")}
+                className={`flex items-center gap-2 px-4 py-2 border rounded-md transition ${
+                  understanding === "yes"
+                    ? "bg-green-100 border-green-400"
+                    : "border-gray-300 hover:bg-gray-50"
+                }`}
+              >
+                <span className="text-lg">👍</span>
+                <span></span>
+              </button>
 
-    {/* NO BUTTON */}
-    <button
-      className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition text-gray-800"
-    >
-      <span className="text-lg">👎</span>
-      <span></span>
-    </button>
-  </div>
-</div>
-
+              {/* NO */}
+              <button
+                onClick={() => setUnderstanding("no")}
+                className={`flex items-center gap-2 px-4 py-2 border rounded-md transition ${
+                  understanding === "no"
+                    ? "bg-red-100 border-red-400"
+                    : "border-gray-300 hover:bg-gray-50"
+                }`}
+              >
+                <span className="text-lg">👎</span>
+                <span></span>
+              </button>
+            </div>
+          </div>
         </section>
 
         {/* RECOMMENDATIONS */}
         <section className="bg-white border rounded-lg shadow-sm p-6 space-y-4">
-          <h2 className="text-xl font-semibold text-gray-900">Recommendations</h2>
+          <h2 className="text-xl font-semibold text-gray-900">
+            Recommendations
+          </h2>
 
           <ul className="list-disc pl-6 space-y-2 text-gray-700">
             <li>Reduce sugar and refined carbohydrates</li>
