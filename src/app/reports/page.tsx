@@ -18,7 +18,7 @@ export default function ResultsPage() {
             <ResultCard
                 title="CT Scan Review"
                 date="June 15, 2024"
-                description="Your recent CT scan is ready for viewing. This includes risk scoring, structural reviews, and comparisons with your previous scans."
+                description="Your recent CT scan is ready to view. This includes risk scoring, structural reviews, and comparisons with your previous scans."
                 status="ready"
             />
             </Link>
@@ -26,7 +26,7 @@ export default function ResultsPage() {
         <ResultCard
           title="MRI Full Body Scan"
           date="February 3, 2024"
-          description="Your full-body MRI scan is available for review. This includes detailed analysis across all body systems."
+          description="Your full-body MRI scan is processing."
           status="processing"
         showClinicalReview={false}
         />
@@ -40,7 +40,7 @@ export default function ResultsPage() {
         <ResultCard
           title="Blood Panel Results"
           date="January 12, 2024"
-          description="Your complete blood panel, including metabolic, inflammatory, and nutrient markers, is ready for review."
+          description="Your complete blood panel, including metabolic, inflammatory, and nutrient markers."
           status="done"
         showClinicalReview={false}
         />
@@ -48,7 +48,7 @@ export default function ResultsPage() {
         <ResultCard
           title="Genetic Risk Report"
           date="December 4, 2023"
-          description="Your genetic screening results are available and include insights for long-term health risk prevention."
+          description="Your genetic screening results including insights for long-term health risk prevention were submitted."
           status="submitted"
           showClinicalReview={false}
 />

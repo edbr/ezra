@@ -11,7 +11,9 @@ export default function HomePage() {
       <Sidebar />
 
       <main className="flex-1 p-12 space-y-8">
-        <h1 className="text-3xl font-semibold mb-6">Welcome</h1>
+        <h1 className="text-3xl font-semibold mb-6">Welcome Eduardo</h1>
+        <TaskList header="Your progress:" />
+            <div className="h-8"></div>
             <Link href="/reports/fatty-liver">
             <ResultCard
                 title="CT Scan Review"
@@ -20,8 +22,6 @@ export default function HomePage() {
                 status="ready"
             />
             </Link>
-
-        <TaskList header="Your progress:" />
       </main>
     </div>
   );

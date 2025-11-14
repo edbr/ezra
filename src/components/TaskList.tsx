@@ -6,7 +6,7 @@ const defaultTasks = [
   { label: "Agree to Terms of Service", checked: true },
   { label: "Complete your profile", checked: true },
   { label: "Verify contact information", checked: true },
-  { label: "Cancer Risk Assessment", checked: false },
+  { label: "Review how you receive your results", checked: false },
   { label: "Review your health summary", checked: false },
 ];
 
