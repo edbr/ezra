@@ -12,14 +12,15 @@ export default function HomePage() {
 
       <main className="flex-1 p-12 space-y-8">
         <h1 className="text-3xl font-semibold mb-6">Welcome</h1>
-        <Link href="/reports/fatty-liver">
-  <ResultCard
-    title="CT Scan Review"
-    date="June 15, 2024"
-    description="Your recent CT scan has been reviewed by our clinical team and is ready for viewing. This includes risk scoring, structural reviews, and comparisons with your previous scans."
-    status="ready"
-  />
-</Link>
+            <Link href="/reports/fatty-liver">
+            <ResultCard
+                title="CT Scan Review"
+                date="June 15, 2024"
+                description="Your recent CT scan is ready for viewing. This includes risk scoring, structural reviews, and comparisons with your previous scans."
+                status="ready"
+            />
+            </Link>
+
         <TaskList header="Your progress:" />
       </main>
     </div>

@@ -1,18 +1,19 @@
 "use client";
 
-import Link from "next/link";
-
 export function ResultCard({
   title,
   date,
   description,
   status = "ready",
+  showClinicalReview = true,
 }: {
   title: string;
   date: string;
   description?: string;
   status?: "submitted" | "processing" | "ready" | "done";
+  showClinicalReview?: boolean;
 }) {
+
   const statusStyles = {
     submitted: {
       bg: "bg-yellow-100",
@@ -59,10 +60,8 @@ export function ResultCard({
           </svg>
         </div>
 
-        {/* STATUS PILL + DATE */}
+        {/* STATUS + DATE */}
         <div className="flex flex-row items-end gap-2">
-
-          {/* STATUS PILL */}
           <div
             className={`flex items-center gap-2 ${statusStyles.bg} ${statusStyles.text} text-xs font-semibold px-3 py-1 rounded-full`}
           >
@@ -70,7 +69,6 @@ export function ResultCard({
             {statusStyles.label}
           </div>
 
-          {/* DATE */}
           <div className="bg-gray-100 text-gray-600 text-sm px-4 py-2 rounded-full">
             {date}
           </div>
@@ -80,15 +78,27 @@ export function ResultCard({
       {/* TITLE */}
       <h2 className="text-2xl font-semibold text-gray-900">{title}</h2>
 
-      {/* Description */}
-      {description && (
-        <p className="text-gray-600 leading-relaxed">{description}</p>
-      )}
+      {/* NEW PERSONALIZED MESSAGE */}
+      <p className="text-gray-600 leading-relaxed">
+        {description}
+      </p>
 
-      {/* Link */}
-      <button className="text-black underline underline-offset-4 decoration-dashed">
-        View Scan Results
-      </button>
+{/* ACTION BUTTONS */}
+<div className="flex gap-4 pt-2">
+
+  {/* Primary action */}
+  <button className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-900 transition">
+    View Scan Results
+  </button>
+
+  {/* Secondary action — only shown when allowed */}
+  {showClinicalReview && (
+    <button className="px-4 py-2 border border-gray-400 text-gray-800 rounded-md hover:bg-gray-100 transition">
+      Send for Clinical Review
+    </button>
+  )}
+</div>
+
     </div>
   );
 }

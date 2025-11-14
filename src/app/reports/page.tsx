@@ -14,21 +14,21 @@ export default function ResultsPage() {
 
         {/* IMAGING RESULTS SECTION */}
         <SectionHeader title="Imaging Results" />
+            <Link href="/reports/fatty-liver">
+            <ResultCard
+                title="CT Scan Review"
+                date="June 15, 2024"
+                description="Your recent CT scan is ready for viewing. This includes risk scoring, structural reviews, and comparisons with your previous scans."
+                status="ready"
+            />
+            </Link>
 
-<Link href="/reports/fatty-liver">
-  <ResultCard
-    title="CT Scan Review"
-    date="June 15, 2024"
-    description="Your recent CT scan has been reviewed by our clinical team and is ready for viewing. This includes risk scoring, structural reviews, and comparisons with your previous scans."
-    status="ready"
-  />
-</Link>
-
-<ResultCard
+        <ResultCard
           title="MRI Full Body Scan"
           date="February 3, 2024"
           description="Your full-body MRI scan is available for review. This includes detailed analysis across all body systems."
           status="processing"
+        showClinicalReview={false}
         />
 
         {/* DIVIDER */}
@@ -42,6 +42,7 @@ export default function ResultsPage() {
           date="January 12, 2024"
           description="Your complete blood panel, including metabolic, inflammatory, and nutrient markers, is ready for review."
           status="done"
+        showClinicalReview={false}
         />
 
         <ResultCard
@@ -49,7 +50,8 @@ export default function ResultsPage() {
           date="December 4, 2023"
           description="Your genetic screening results are available and include insights for long-term health risk prevention."
           status="submitted"
-        />
+          showClinicalReview={false}
+/>
       </main>
     </div>
   );
